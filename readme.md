@@ -3,7 +3,7 @@ Warning: This is an alpha version many features are no available!!!!
 
 This is a template for build sites with Laravel 4 and AngularJS, contains all necesary features like Less for frontend and backend, javascript minification, easy to customize boostrap theme thanks to Bootswatch and others.
 
-This project use composer, bower an grunt for a easy to build site and live reload features.
+This project use composer, bower an grunt for an easy to build site and live reload features.
 
 ### Packages
 

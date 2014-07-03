@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CAMICARD</title>
+	<title>Project</title>
 	<link rel="stylesheet" href="assets/stylesheets/frontend.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -16,7 +16,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">CAMICARD</a>
+        <a class="navbar-brand" href="#">Project</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
