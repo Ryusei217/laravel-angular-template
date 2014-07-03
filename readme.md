@@ -9,7 +9,7 @@ This project use composer, bower an grunt for an easy to build site and live rel
 
 #### Bower Packages
 * [AngularJS](http://angularjs.org)
-    * AngularJS lets you write client-side modern web applications (no available.
+    * AngularJS lets you write client-side modern web applications.
 * [UI-Bootstrap](http://angular-ui.github.io/bootstrap/)
     *  Native AngularJS directives based on Twitter Bootstrap's markup and CSS (no available).
 * [Boostrap](http://getbootstrap.com/)
@@ -54,7 +54,7 @@ If you want live reload use "grunt watch" task. For only build without using liv
 
 #### Step 2: Configure Database
 
-Edit Config/databas.php to match your local database settings.
+Edit Config/database.php to match your local database settings.
 
 #### Step 3: Populate Database (no available)
 Run these commands to create and populate Users table:
