@@ -88,3 +88,17 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+|--------------------------------------------------------------------------
+| AngularJS Filters
+|--------------------------------------------------------------------------
+|
+| The following filters are used to verify that the user of the current
+| session is logged into this application.
+|
+*/
+Route::filter('apiAuth', function() {
+    if(!Auth::check())
+        return Response.json(['status' => 'error', 'message' => 'Access Denied.'], 401);
+});
