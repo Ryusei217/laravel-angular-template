@@ -1,7 +1,7 @@
 # Created by http://www.gitignore.io
 
 ### Project Ignore ###
-/public/assets
+/public/assets/*
 
 ### Laravel4 ###
 /bootstrap/compiled.php
