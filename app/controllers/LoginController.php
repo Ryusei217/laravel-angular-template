@@ -10,7 +10,7 @@ class LoginController extends \BaseController {
 	public function index()
 	{
         Auth::logout();
-        return Response::json(['flash' => 'You have been disconnected'], 200);
+        return Response::json(['status' => 'success', 'message' => 'You have been disconnected'], 200);
 	}
 
 
@@ -27,9 +27,9 @@ class LoginController extends \BaseController {
         );
         
         if (Auth::attempt($credentials))
-            return Response::json(['user' => Auth::user()->toArray()], 202);
+            return Response::json(['status' => 'success', 'user' => Auth::user()->toArray()], 202);
         else
-            return Response::json(['flash' => 'Authentication failed'], 401);
+            return Response::json(['status' => 'error', 'message' => 'Authentication Failed.'], 401);
 	}
 
 

@@ -56,7 +56,7 @@ If you want live reload use "grunt watch" task. For only build without using liv
 
 Edit Config/database.php to match your local database settings.
 
-#### Step 3: Populate Database (no available)
+#### Step 3: Populate Database
 Run these commands to create and populate Users table:
 
 	php artisan migrate

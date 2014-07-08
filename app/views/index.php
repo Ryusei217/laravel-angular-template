@@ -22,11 +22,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project</a>
+                <a class="navbar-brand" href="/">Project</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a>
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li><a href="/comments">Comments</a>
                     </li>
                     <li><a href="#about">About</a>
                     </li>
