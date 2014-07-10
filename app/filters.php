@@ -91,7 +91,7 @@ Route::filter('csrf', function()
 
 /*
 |--------------------------------------------------------------------------
-| AngularJS Filters
+| AngularJS Authentication Filters
 |--------------------------------------------------------------------------
 |
 | The following filters are used to verify that the user of the current
@@ -100,5 +100,22 @@ Route::filter('csrf', function()
 */
 Route::filter('apiAuth', function() {
     if(!Auth::check())
-        return Response.json(['status' => 'error', 'message' => 'Access Denied.'], 401);
+        return Response::json(['status' => 'error', 'message' => 'Access Denied.'], 401);
+});
+
+/*
+|--------------------------------------------------------------------------
+| AngularJS CSRF Protection Filter
+|--------------------------------------------------------------------------
+|
+| The CSRF filter is responsible for protecting your application against
+| cross-site request forgery attacks. If this special token in a user
+| session does not match the one given in this request, we'll bail.
+|
+*/
+Route::filter('apiCSRF',function(){
+    $allHeaders = getallheaders();
+    if (Session::token() != $allHeaders['csrf_token']) {
+        return Response::json(['message' => "Attemp of CSRF detectd" ], 418);
+    }
 });

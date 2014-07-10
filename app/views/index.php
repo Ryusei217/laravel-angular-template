@@ -30,6 +30,8 @@
                     </li>
                     <li><a href="/comments">Comments</a>
                     </li>
+                    <li><a href="/login">Sing In</a>
+                    </li>
                     <li><a href="#about">About</a>
                     </li>
                     <li><a href="#contact">Contact</a>
@@ -64,8 +66,10 @@
             </div>
         </div>
     </footer>
-
     <script src="assets/javascript/frontend.js"></script>
+    <script type="text/javascript">
+        angular.module('laravelApp').constant('CSRF_TOKEN', '<?php echo csrf_token(); ?>'); 
+    </script>
 </body>
 
 </html>

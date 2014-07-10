@@ -2,9 +2,14 @@
 
 class CommentController extends \BaseController {
     
+    /**
+     * executes the two filters before execute another operation.
+     *
+     */
     public function __construct()
     {
         $this->beforeFilter('apiAuth');
+        $this->beforeFilter('apiCSRF');
     }
 
 	/**
