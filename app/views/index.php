@@ -1,19 +1,23 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project</title>
     <link rel="stylesheet" href="assets/stylesheets/frontend.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body ng-app="laravelApp">
-    <!--[if lt IE 9]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to           improve your experience.</p>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavCtrl">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,22 +30,15 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a>
-                    </li>
-                    <li><a href="/comments">Comments</a>
-                    </li>
-                    <li><a href="/login">Sing In</a>
-                    </li>
-                    <li><a href="#about">About</a>
-                    </li>
-                    <li><a href="#contact">Contact</a>
+                    <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+                        <a ng-href="{{item.link}}"><i class="fa {{item.icon}}"></i> {{item.title}}</a>
                     </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
     </nav>
-
+    
     <!-- Add your site or application content here -->
     <div ng-view=""></div>
 
@@ -66,6 +63,23 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    
     <script src="assets/javascript/frontend.js"></script>
     <script type="text/javascript">
         angular.module('laravelApp').constant('CSRF_TOKEN', '<?php echo csrf_token(); ?>'); 
