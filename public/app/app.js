@@ -8,6 +8,9 @@
         }).when('/login', {
             templateUrl: 'app/partials/login.html',
             controller: 'LoginCtrl'
+        }).when('/register', {
+            templateUrl: 'app/partials/register.html',
+            controller: 'LoginCtrl'
         }).when('/comments', {
             templateUrl: 'app/partials/comments/list.html',
             controller: 'CommentCtrl'

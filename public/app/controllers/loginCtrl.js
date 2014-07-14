@@ -14,5 +14,18 @@
                 $scope.flash = response.data.flash;
             });
         };
+        
+        $scope.register = function() {
+            LoginSrv.register({
+                'username' : $sanitize($scope.account.username),
+                'email' : $sanitize($scope.account.email),
+                'password' : $sanitize($scope.account.password),
+                'password_confirmation' : $sanitize($scope.account.password_confirmation)
+            }, function(data){
+                $scope.acount = {};
+            }, function(error) {
+                
+            });
+        };
     });
 }());

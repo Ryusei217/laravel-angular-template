@@ -31,8 +31,13 @@ Route::group(array('prefix' => 'api'), function() {
 	// this ensures that a user can't access api/create or api/edit when there's nothing there
     Route::resource('comments', 'CommentController', 
                     array('only' => array('index', 'store', 'destroy')));
-    Route::resource('login', 'LoginController', array('only' => array('index', 'store')));
+    
+    // Confide RESTful route
+    Route::controller( 'user', 'UserController');
 });
+
+Route::get('user/confirm/{code}', 'UserController@getConfirm');
+Route::get('user/reset/{token}', 'UserController@getReset');
 
 // =============================================
 // CATCH ALL ROUTE =============================
@@ -43,3 +48,4 @@ App::missing(function($exception)
 {
 	return View::make('index');
 });
+
