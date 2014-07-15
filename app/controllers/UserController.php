@@ -72,7 +72,7 @@ class UserController extends BaseController {
             // caught by the authentication filter IE Redirect::guest('user/login').
             // Otherwise fallback to '/'
             // Fix pull #145
-            return Response::json(['status' => 'success', 'user' => Auth::user()->toArray()], 202);
+            return Response::json(['status' => 'success', 'message' => 'Welcome '.$input['email'] ], 202);
         }
         else
         {

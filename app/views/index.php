@@ -33,6 +33,16 @@
                     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
                         <a ng-href="{{item.link}}"><i class="fa {{item.icon}}"></i> {{item.title}}</a>
                     </li>
+                    <li ng-class="{ active: isActive('/login') } " ng-hide="logged">
+                        <a href="/login" >
+                            <i class="fa fa-sign-in"></i> Sign In
+                        </a>
+                    </li>
+                    <li ng-show="logged">
+                        <a href ng-click="logout()" >
+                            <i class="fa fa-sign-in"></i> Sign Out
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -74,11 +84,6 @@
         ga('create', 'UA-XXXXX-X');
         ga('send', 'pageview');
     </script>
-
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
     
     <script src="assets/javascript/frontend.js"></script>
     <script type="text/javascript">

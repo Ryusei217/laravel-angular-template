@@ -47,6 +47,7 @@ module.exports = function(grunt) {
           './bower_components/angular-resource/angular-resource.js',
           './bower_components/angular-route/angular-route.js',
           './bower_components/angular-sanitize/angular-sanitize.js',
+          './bower_components/toastr/toastr.js',
           './public/app/app.js',
           './public/app/controllers/*.js',
           './public/app/services/*.js',
@@ -57,14 +58,6 @@ module.exports = function(grunt) {
       js_backend: {
         src: [
           './bower_components/jquery/jquery.js',
-          './bower_components/bootstrap/dist/js/bootstrap.js',
-          './bower_components/angular/angular.js',
-          './bower_components/angular-resource/angular-resource.js',
-          './bower_components/angular-route/angular-route.js',
-          './bower_components/angular-sanitize/angular-sanitize.js',
-          './public/app/app.js',
-          './public/app/controllers/*.js',
-          './public/app/services/*.js',
           './app/assets/javascript/backend.js'
         ],
         dest: './public/assets/javascript/backend.js',
@@ -115,14 +108,6 @@ module.exports = function(grunt) {
           files: [
             //watched files
             './bower_components/jquery/jquery.js',
-            './bower_components/bootstrap/dist/js/bootstrap.js',
-            './bower_components/angular/angular.js',
-            './bower_components/angular-resource/angular-resource.js',
-            './bower_components/angular-route/angular-route.js',
-            './bower_components/angular-sanitize/angular-sanitize.js',
-            './public/app/app.js',
-            './public/app/controllers/*.js',
-            './public/app/services/*.js',
             './app/assets/javascript/backend.js'
           ],   
           tasks: ['concat:js_backend','uglify:backend'],     //tasks to run

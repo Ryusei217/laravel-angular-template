@@ -6,12 +6,15 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
         
-        User::create( array(
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin'),
-            'username' => 'admin',
-            'confirmation_code' => str_random(40),
-            'confirmed' => '1'
-        ));
+        $user = new User;
+
+        $user->username = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('admin');
+        $user->password_confirmation = Hash::make('admin');
+        $user->confirmation_code = str_random(40);
+        $user->confirmed = '1';
+        
+        $user->save();
     }
 }

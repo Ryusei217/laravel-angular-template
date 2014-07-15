@@ -6,6 +6,8 @@
         $scope.commentData = CommentSrv.list({}, function (data) {
             $scope.comments = data;
             $scope.loading = false;
+        }, function (error) {
+            toastr.error(error.data.message, error.data.status);
         });
 
         // loading variable to show the spinning loading icon
@@ -19,14 +21,15 @@
             CommentSrv.create(
                 $scope.comment,
                 function (data) {
+                    toastr.success(data.message, data.status);
                     // if successful, we'll need to refresh the comment list
                     CommentSrv.list({}, function (getData) {
                         $scope.comments = getData;
                         $scope.loading = false;
                     });
                 },
-                function (data) {
-                    console.log(data);
+                function (error) {
+                    toastr.error(error.data.message, error.data.status);
                 }
             );
         };
@@ -38,12 +41,15 @@
             CommentSrv.destroy(
                 { id: id },
                 function (data) {
-
+                    toastr.warning(data.message, data.status);
                     // if successful, we'll need to refresh the comment list
                     CommentSrv.list({}, function (getData) {
                         $scope.comments = getData;
                         $scope.loading = false;
                     });
+                },
+                function (error) {
+                    toastr.error(error.data.message, error.data.status);
                 }
             );
         };

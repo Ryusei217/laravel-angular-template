@@ -6,6 +6,7 @@
     "angular": "~1.2.19",
     "angular-resource": "~1.2.19",
     "angular-sanitize": "~1.2.19",
-    "angular-route": "~1.2.19"
+    "angular-route": "~1.2.19",
+    "toastr": "~2.0.3"
   }
 }

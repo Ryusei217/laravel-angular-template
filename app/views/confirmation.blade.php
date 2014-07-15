@@ -10,5 +10,5 @@
 
     @endif
     <br />
-    <a href="/login"> Volver al Inicio</a>
+    <a href="/login"> Sign In</a>
 @stop
