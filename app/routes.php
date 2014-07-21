@@ -36,10 +36,6 @@ Route::group(array('prefix' => 'api'), function() {
     Route::controller( 'user', 'UserController');
 });
 
-//Confide confirmation email and reset password
-Route::get('user/confirm/{code}', 'UserController@getConfirm');
-Route::get('user/reset/{token}', 'UserController@getReset');
-
 // =============================================
 // CATCH ALL ROUTE =============================
 // =============================================

@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
     <title>Project</title>
     <link rel="stylesheet" href="assets/stylesheets/frontend.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('laravelApp', ['ngResource', 'ngSanitize', 'ngRoute']).config(function ($routeProvider, $locationProvider) {
+    angular.module('laravelApp', ['ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap']).config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/', {
             templateUrl: 'app/partials/main.html',
             controller: 'MainCtrl'
@@ -11,6 +11,9 @@
         }).when('/register', {
             templateUrl: 'app/partials/register.html',
             controller: 'LoginCtrl'
+        }).when('/user/confirm/:token', {
+            templateUrl: 'app/partials/user/confirm.html',
+            controller: 'ConfirmCtrl'
         }).when('/comments', {
             templateUrl: 'app/partials/comments/list.html',
             controller: 'CommentCtrl'

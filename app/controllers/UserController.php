@@ -106,12 +106,12 @@ class UserController extends BaseController {
         if ( Confide::confirm( $code ) )
         {
             $notice_msg = Lang::get('confide::confide.alerts.confirmation');
-            return View::make('confirmation')->with( 'notice', $notice_msg )->with('error', '');
+            return Response::json(['status' => 'success', 'message' => $notice_msg], 200);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_confirmation');
-            return View::make('confirmation')->with( 'error', $error_msg )->with('notice', '');
+            return Response::json(['status' => 'Error', 'message' => $error_msg], 400);
         }
     }
 

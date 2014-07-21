@@ -5,7 +5,8 @@
         return $resource('/api/user/', {}, {
             register: { method: 'POST' },
             logout: { method: 'GET', url: '/api/user/logout' },
-            login: { method: 'POST', url: '/api/user/login' }
+            login: { method: 'POST', url: '/api/user/login' },
+            confirm: { method: 'GET', url: '/api/user/confirm/:token'}
         });
     });
 }());

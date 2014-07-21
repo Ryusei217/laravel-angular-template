@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('laravelApp').controller('LoginCtrl', function ($scope, $rootScope, $sanitize, $location, LoginSrv) {
+    angular.module('laravelApp').controller('LoginCtrl', function ($scope, $rootScope, $routeParams, $sanitize, $location, LoginSrv) {
         $scope.login = function () {
             LoginSrv.login({
                 'email': $sanitize($scope.email),
@@ -29,5 +29,25 @@
                 toastr.error(error.data.message, error.data.status);
             });
         };
+    });
+    
+    angular.module('laravelApp').controller('ConfirmCtrl', function ($scope, $routeParams, LoginSrv) {
+        $scope.alerts = [
+        ];
+        
+        $scope.message = LoginSrv.confirm({
+            token: $routeParams.token
+        }, function (data) {
+            $scope.alerts.push({
+                type : 'success',
+                message: data.message
+            });
+            
+        }, function (error) {
+            $scope.alerts.push({
+                type : 'danger',
+                message: error.data.message
+            });
+        });
     });
 }());

@@ -19,7 +19,7 @@ class CommentController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Comment::get());
+        return Response::json(Comment::get());
 	}
 
 
