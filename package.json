@@ -1,7 +1,7 @@
 {
-  "name": "laravel",
+  "name": "laravel-angular-Template",
   "version": "0.0.0",
-  "description": "laravel boostrap project",
+  "description": "Laravel-AngularJS Template",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
