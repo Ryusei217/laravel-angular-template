@@ -11,6 +11,11 @@
 */
 
 class UserController extends BaseController {
+    
+    public function __construct()
+    {
+        $this->beforeFilter('apiCSRF');
+    }
 
     /**
      * Stores new account
@@ -44,7 +49,7 @@ class UserController extends BaseController {
             // Get validation errors (see Ardent package)
             $error = $user->errors()->all(':message');
 
-            return Response::json(['status' => 'error', 'message' => $error], 401);
+            return Response::json(['status' => 'error', 'message' => $error], 400);
         }
     }
 
@@ -106,7 +111,7 @@ class UserController extends BaseController {
         if ( Confide::confirm( $code ) )
         {
             $notice_msg = Lang::get('confide::confide.alerts.confirmation');
-            return Response::json(['status' => 'success', 'message' => $notice_msg], 200);
+            return Response::json(['status' => 'Success', 'message' => $notice_msg], 200);
         }
         else
         {
@@ -124,15 +129,12 @@ class UserController extends BaseController {
         if( Confide::forgotPassword( Input::get( 'email' ) ) )
         {
             $notice_msg = Lang::get('confide::confide.alerts.password_forgot');
-                        return Redirect::to('user/login')
-                            ->with( 'notice', $notice_msg );
+            return Response::json(['status' => 'success', 'message' => $notice_msg], 200);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_forgot');
-                        return Redirect::to('user/forgot')
-                            ->withInput()
-                ->with( 'error', $error_msg );
+            return Response::json(['status' => 'Error', 'message' => $error_msg], 400);
         }
     }
 
@@ -152,15 +154,12 @@ class UserController extends BaseController {
         if( Confide::resetPassword( $input ) )
         {
             $notice_msg = Lang::get('confide::confide.alerts.password_reset');
-                        return Redirect::to('user/login')
-                            ->with( 'notice', $notice_msg );
+            return Response::json(['status' => 'Success', 'message' => $notice_msg], 200);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_reset');
-                        return Redirect::to('user/reset/'.$input['token'])
-                            ->withInput()
-                ->with( 'error', $error_msg );
+            return Response::json(['status' => 'Error', 'message' => $error_msg], 400);
         }
     }
 

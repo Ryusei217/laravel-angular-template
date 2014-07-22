@@ -2,6 +2,9 @@
     'use strict';
 
     angular.module('laravelApp').controller('LoginCtrl', function ($scope, $rootScope, $routeParams, $sanitize, $location, LoginSrv) {
+        // loading variable to show the spinning loading icon
+        $scope.loading = false;
+        
         $scope.login = function () {
             LoginSrv.login({
                 'email': $sanitize($scope.email),
@@ -17,15 +20,32 @@
         };
         
         $scope.register = function () {
+            $scope.loading = true;
             LoginSrv.register({
                 'username' : $sanitize($scope.account.username),
                 'email' : $sanitize($scope.account.email),
                 'password' : $sanitize($scope.account.password),
                 'password_confirmation' : $sanitize($scope.account.password_confirmation)
             }, function (data) {
+                $scope.loading = false;
                 $scope.account = {};
                 toastr.success(data.message, data.status);
             }, function (error) {
+                $scope.loading = false;
+                toastr.error(error.data.message, error.data.status);
+            });
+        };
+        
+        $scope.forgot = function () {
+            $scope.loading = true;
+            LoginSrv.forgot({
+                'email' : $sanitize($scope.email),
+            }, function (data) {
+                $scope.email = '';
+                toastr.success(data.message, data.status);
+                $scope.loading = false;
+            }, function (error) {
+                $scope.loading = false;
                 toastr.error(error.data.message, error.data.status);
             });
         };
@@ -49,5 +69,25 @@
                 message: error.data.message
             });
         });
+    });
+    
+    angular.module('laravelApp').controller('ResetCtrl', function ($scope, $sanitize, $routeParams, LoginSrv) {
+        // loading variable to show the spinning loading icon
+        $scope.loading = false;
+
+        $scope.reset = function () {
+            LoginSrv.reset({
+                'token' : $routeParams.token,
+                'password' : $sanitize($scope.account.password),
+                'password_confirmation' : $sanitize($scope.account.password_confirmation)
+            }, function (data) {
+                $scope.loading = false;
+                $scope.account = {};
+                toastr.success(data.message, data.status);
+            }, function (error) {
+                $scope.loading = false;
+                toastr.error(error.data.message, error.data.status);
+            });
+        };
     });
 }());

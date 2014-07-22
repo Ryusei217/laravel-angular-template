@@ -11,9 +11,15 @@
         }).when('/register', {
             templateUrl: 'app/partials/register.html',
             controller: 'LoginCtrl'
+        }).when('/forgot', {
+            templateUrl: 'app/partials/user/forgot.html',
+            controller: 'LoginCtrl'
         }).when('/user/confirm/:token', {
             templateUrl: 'app/partials/user/confirm.html',
             controller: 'ConfirmCtrl'
+        }).when('/user/reset/:token', {
+            templateUrl: 'app/partials/user/reset.html',
+            controller: 'ResetCtrl'
         }).when('/comments', {
             templateUrl: 'app/partials/comments/list.html',
             controller: 'CommentCtrl'
