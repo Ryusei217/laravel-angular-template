@@ -1,5 +1,7 @@
 ## Laravel-Angular Template
-Warning: This is an alpha version many features are no available!!!!
+Warning: This is a beta version could have some bugs!!!!
+
+Important: This work is inspired in https://github.com/bktz/Laravel-4-AngularJS-Starter-Site special thanks to Benjamin Katznelson
 
 This is a template for build sites with Laravel 4 and AngularJS, contains all necesary features like Less for frontend and backend, javascript minification, easy to customize boostrap theme thanks to Bootswatch and others.
 
@@ -7,11 +9,19 @@ This project use composer, bower an grunt for an easy to build site and live rel
 
 ### Packages
 
+#### Composer Packages
+* [Entrust](https://github.com/zizaco/entrust)
+    * Entrust provides a flexible way to add Role-based Permissions to Laravel 4.
+* [Confide](https://github.com/zizaco/confide)
+    * Confide is an authentication solution for Laravel4 made to cut repetitive work involving the management of users: Account creation, login, logout, confirmation by e-mail, password reset, etc.
+* [PHPUnit](https://github.com/sebastianbergmann/phpunit)
+    * PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.
+
 #### Bower Packages
 * [AngularJS](http://angularjs.org)
     * AngularJS lets you write client-side modern web applications.
 * [UI-Bootstrap](http://angular-ui.github.io/bootstrap/)
-    *  Native AngularJS directives based on Twitter Bootstrap's markup and CSS (no available).
+    *  Native AngularJS directives based on Twitter Bootstrap's markup and CSS.
 * [Boostrap](http://getbootstrap.com/)
     * Twitter Bootstrap with Bootswatch United Theme ready for customize.
 
@@ -52,17 +62,62 @@ If you haven't already, you might want to make [composer be installed globally](
 
 If you want live reload use "grunt watch" task. For only build without using live reload use "grunt init".
 
-#### Step 2: Configure Database
+#### Step 2: Configure Environments
 
-Edit Config/database.php to match your local database settings.
+Laravel 4 will load configuration files depending on your environment. Basset will also build collections depending on this environment setting.
 
-#### Step 3: Populate Database
+Open ***bootstrap/start.php*** and edit the following lines to match your settings. You want to be using your machine name in Windows and your hostname in OS X and Linux (type `hostname` in terminal). Using the machine name will allow the `php artisan` command to use the right configuration files as well.
+
+    $env = $app->detectEnvironment(array(
+
+        'local' => array('your-local-machine-name'),
+        'staging' => array('your-staging-machine-name'),
+        'production' => array('your-production-machine-name'),
+
+    ));
+
+Now create the folder inside ***app/config*** that corresponds to the environment the code is deployed in. This will most likely be ***local*** when you first start a project.
+
+You will now be copying the initial configuration file inside this folder before editing it. Let's start with ***app/config/app.php***. So ***app/config/local/app.php*** will probably look something like this, as the rest of the configuration can be left to their defaults from the initial config file:
+
+    <?php
+
+    return array(
+
+        'url' => 'http://myproject.local',
+
+        'timezone' => 'UTC',
+
+        'key' => 'YourSecretKey!!!',
+
+        'providers' => array(
+
+        [... Removed ...]
+
+        /* Uncomment for use in development */
+    //     'Way\Generators\GeneratorsServiceProvider', // Generators
+    //     'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
+
+        ),
+
+    );
+
+#### Step 3: Configure Database
+
+Now that you have the environment configured, you need to create a database configuration for it. Copy the file ***app/config/database.php*** in ***app/config/local*** and edit it to match your local database settings. You can remove all the parts that you have not changed as this configuration file will be loaded over the initial one.
+
+#### Step 4: Configure Mailer
+
+In the same fashion, copy the ***app/config/mail.php*** configuration file in ***app/config/local/mail.php***. Now set the `address` and `name` from the `from` array in ***config/mail.php***. Those will be used to send account confirmation and password reset emails to the users.
+If you don't set that registration will fail because it cannot send the confirmation email.
+
+#### Step 5: Populate Database
 Run these commands to create and populate Users table:
 
 	php artisan migrate
 	php artisan db:seed
 
-#### Step 4: Make sure app/storage is writable by your web server.
+#### Step 6: Make sure app/storage is writable by your web server.
 
 If permissions are set correctly:
 
