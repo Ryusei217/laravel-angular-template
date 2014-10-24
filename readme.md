@@ -129,7 +129,7 @@ Should work, if not try
 
 ### Important Folders and Files
 #### app/assets
-Contains the javascripts and stylesheets for customizing your app.
+Contains the AngularJS javascripts files, and stylesheets for customizing your app.
 
 #### app/views/index.php
 Index file for the application.
@@ -137,8 +137,8 @@ Index file for the application.
 #### public/assets
 Contains the compiled javascripts, stylesheets and fonts.
 
-#### public/app
-Contains the AngularJS javascript files.
+#### public/partials
+Contains the AngularJS partial views.
 
 #### Others
 Coming soon.
